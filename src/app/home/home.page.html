@@ -7,8 +7,37 @@
 </ion-header>
 
 <ion-content>
+  
   <div class="ion-padding">
-    The world is your oyster.
-    <p>If you get lost, the <a target="_blank" rel="noopener" href="https://ionicframework.com/docs/">docs</a> will be your guide.</p>
+
+    <p>
+      Learn more from Jami at <a href="https://jamibot.com" target="_blank">jamibot.com</a>
+    </p>
+
+    <ion-card>
+      <!-- <ion-list>
+        <ion-item *ngFor="let item of items;">
+          <img src="{{item.user.avatar_url}}">
+          <ion-label>{{item.id}}</ion-label>
+        </ion-item>
+      </ion-list> -->
+    </ion-card>
+
+    <ion-card *ngFor="let item of items;">
+      <ion-card-header>
+        <ion-card-title><img src="{{item.user.avatar_url}}">{{item.user.login}}</ion-card-title>
+        <ion-card-subtitle>{{item.id}}</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>{{item.title}}</ion-card-content>
+    </ion-card>
+
+    <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)" >
+      <ion-infinite-scroll-content
+        loadingSpinner="bubbles"
+        loadingText="Loading more data...">
+      </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+
   </div>
+  
 </ion-content>
